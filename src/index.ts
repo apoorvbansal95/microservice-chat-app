@@ -11,7 +11,8 @@ const port = process.env.PORT
 connectDB()
 connectRabbitMQ()
 
-app.use("api/v1", userRoutes)
+app.use(express.json())
+app.use("/api/v1", userRoutes)
 
 export const redisClient = createClient({
     url: process.env.REDIS_URL || 'redis://localhost:6379'
